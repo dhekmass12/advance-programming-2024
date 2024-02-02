@@ -52,6 +52,25 @@ public class ProductController {
         return "redirect:list";
     }
 
+    @GetMapping("/delete")
+    public String deleteProductPage(Model model){
+        Product product = new Product();
+        Product dummyProduct = new Product();
+        dummyProduct.setProductId("null");
+        dummyProduct.setProductName("-");
+        List<Product> products = service.findAll();
+        products.add(dummyProduct);
+        model.addAttribute("product", product);
+        model.addAttribute("products", products);
+        return "deleteProduct";
+    }
+
+    @PostMapping("/delete")
+    public String deleteProductPost(@ModelAttribute Product product, Model model){
+        service.delete(product);
+        return "redirect:list";
+    }
+
     @GetMapping("/list")
     public String productListPage(Model model){
         List<Product> allProducts = service.findAll();

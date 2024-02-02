@@ -33,6 +33,19 @@ public class ProductRepository {
         return null;
     }
 
+    public Product delete(Product searchedProduct){
+        for(int i = 0; i < productData.size(); ++i){
+            String searchedProductId = searchedProduct.getProductId();
+            String currentProductId = productData.get(i).getProductId();
+            if (searchedProductId.equals(currentProductId)){
+                productData.remove(i);
+                return searchedProduct;
+            }
+        }
+
+        return null;
+    }
+
     public String generateId(){
         return Integer.toString(productData.size() + 1);
     }
