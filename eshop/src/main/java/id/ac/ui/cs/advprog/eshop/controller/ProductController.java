@@ -27,7 +27,47 @@ public class ProductController {
 
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model){
+        String id = service.generateId();
+        product.setProductId(id);
         service.create(product);
+        return "redirect:list";
+    }
+
+    @GetMapping("/edit")
+    public String editProductPage(Model model){
+        Product product = new Product();
+        Product dummyProduct = new Product();
+        dummyProduct.setProductId("null");
+        dummyProduct.setProductName("-");
+        List<Product> products = service.findAll();
+        products.add(dummyProduct);
+        model.addAttribute("product", product);
+        model.addAttribute("products", products);
+        return "editProduct";
+    }
+
+    @PostMapping("/edit")
+    public String editProductPost(@ModelAttribute Product product, Model model){
+        service.edit(product);
+        return "redirect:list";
+    }
+
+    @GetMapping("/delete")
+    public String deleteProductPage(Model model){
+        Product product = new Product();
+        Product dummyProduct = new Product();
+        dummyProduct.setProductId("null");
+        dummyProduct.setProductName("-");
+        List<Product> products = service.findAll();
+        products.add(dummyProduct);
+        model.addAttribute("product", product);
+        model.addAttribute("products", products);
+        return "deleteProduct";
+    }
+
+    @PostMapping("/delete")
+    public String deleteProductPost(@ModelAttribute Product product, Model model){
+        service.delete(product);
         return "redirect:list";
     }
 
