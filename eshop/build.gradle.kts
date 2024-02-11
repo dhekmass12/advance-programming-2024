@@ -41,21 +41,21 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
 
-task.register<Test>("unitTest"){
+tasks.register<Test>("unitTest"){
     description = "Run unit tests."
     group = "verification"
 
     filter{
-        excludeTestMatching("*FunctionalTest")
+        excludeTestsMatching("*FunctionalTest")
     }
 }
 
-task.register<Test>("functionalTest"){
+tasks.register<Test>("functionalTest"){
     description = "Run functional tests."
     group = "verification"
 
     filter{
-        includeTestMatching("*FunctionalTest")
+        includeTestsMatching("*FunctionalTest")
     }
 }
 
