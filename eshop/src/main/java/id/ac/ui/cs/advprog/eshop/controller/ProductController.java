@@ -13,19 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/")
 public class ProductController {
     @Autowired
     private ProductService service;
 
-    @GetMapping("/create")
+    @GetMapping("")
+    public String advShop(Model model){
+        return "advShop";
+    }
+
+    @GetMapping("/product/create")
     public String createProductPage(Model model){
         Product product = new Product();
         model.addAttribute("product", product);
         return "createProduct";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/product/create")
     public String createProductPost(@ModelAttribute Product product, Model model){
         String id = service.generateId();
         product.setProductId(id);
@@ -33,7 +38,7 @@ public class ProductController {
         return "redirect:list";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/product/edit")
     public String editProductPage(Model model){
         Product product = new Product();
         Product dummyProduct = new Product();
@@ -46,13 +51,13 @@ public class ProductController {
         return "editProduct";
     }
 
-    @PostMapping("/edit")
+    @PostMapping("/product/edit")
     public String editProductPost(@ModelAttribute Product product, Model model){
         service.edit(product);
         return "redirect:list";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/product/delete")
     public String deleteProductPage(Model model){
         Product product = new Product();
         Product dummyProduct = new Product();
@@ -65,13 +70,13 @@ public class ProductController {
         return "deleteProduct";
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/product/delete")
     public String deleteProductPost(@ModelAttribute Product product, Model model){
         service.delete(product);
         return "redirect:list";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/product/list")
     public String productListPage(Model model){
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
