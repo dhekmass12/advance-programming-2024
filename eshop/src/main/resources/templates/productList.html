@@ -20,8 +20,8 @@
     </thead>
     <tbody>
     <tr th:each="product: ${products}">
-      <td th:text="${product.productName}"></td>
-      <td th:text="${product.productQuantity}"></td>
+      <td th:text="${product.productName}" th:id="${product.productName}"></td>
+      <td th:text="${product.productQuantity}" th:id="${product.productQuantity}"></td>
     </tr>
     </tbody>
   </table>
