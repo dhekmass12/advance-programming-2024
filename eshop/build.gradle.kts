@@ -7,14 +7,14 @@ plugins {
 group = "id.ac.ui.cs.advprog"
 version = "0.0.1-SNAPSHOT"
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+}
+
 val seleniumJavaVersion = "4.14.1"
 val seleniumJupiterVersion = "5.0.1"
 val webdrivermanagerVersion = "5.6.3"
 val junitJupiterVersion = "5.9.1"
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-}
 
 configurations {
     compileOnly {
@@ -41,24 +41,24 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
 
-task.register<Test>("unitTest"){
-    description = "Run unit tests."
+tasks.register<Test>("unitTest"){
+    description = "Runs unit tests."
     group = "verification"
 
     filter{
-        excludeTestMatching("*FunctionalTest")
+        excludeTestsMatching("*FunctionalTest")
     }
 }
 
-task.register<Test>("functionalTest"){
-    description = "Run functional tests."
+tasks.register<Test>("functionalTest"){
+    description = "Runs functional tests."
     group = "verification"
 
     filter{
-        includeTestMatching("*FunctionalTest")
+        includeTestsMatching("*FunctionalTest")
     }
 }
 
-tasks.withType<Test>().configureEach {
+tasks.withType<Test>().configureEach() {
     useJUnitPlatform()
 }

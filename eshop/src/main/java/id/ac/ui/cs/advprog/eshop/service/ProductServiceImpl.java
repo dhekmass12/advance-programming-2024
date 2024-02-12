@@ -38,6 +38,11 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public Product findProductById(String id){
+        return productRepository.findProductById(id);
+    }
+
+    @Override
     public List<Product> findAll(){
         Iterator<Product> productIterator = productRepository.findAll();
         List<Product> allProduct = new ArrayList<>();
