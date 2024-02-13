@@ -41,12 +41,7 @@ public class ProductController {
     public String editProductPage(Model model){
         Product product = new Product();
         Product dummyProduct = new Product();
-        dummyProduct.setProductId("null");
-        dummyProduct.setProductName("-");
-        List<Product> products = service.findAll();
-        products.add(dummyProduct);
-        model.addAttribute(PRODUCT, product);
-        model.addAttribute(PRODUCTS, products);
+        editAndDeleteProductPageHelper(product, dummyProduct, model);
         return "editProduct";
     }
 
@@ -60,12 +55,7 @@ public class ProductController {
     public String deleteProductPage(Model model){
         Product product = new Product();
         Product dummyProduct = new Product();
-        dummyProduct.setProductId("null");
-        dummyProduct.setProductName("-");
-        List<Product> products = service.findAll();
-        products.add(dummyProduct);
-        model.addAttribute(PRODUCT, product);
-        model.addAttribute(PRODUCTS, products);
+        editAndDeleteProductPageHelper(product, dummyProduct, model);
         return "deleteProduct";
     }
 
@@ -82,4 +72,12 @@ public class ProductController {
         return "productList";
     }
 
+    private void editAndDeleteProductPageHelper(Product product, Product dummyProduct, Model model){
+        dummyProduct.setProductId("null");
+        dummyProduct.setProductName("-");
+        List<Product> products = service.findAll();
+        products.add(dummyProduct);
+        model.addAttribute(PRODUCT, product);
+        model.addAttribute(PRODUCTS, products);
+    }
 }
