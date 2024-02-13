@@ -22,12 +22,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class ProductControllerTest {
+class ProductControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void createProductPageTest() throws Exception{
+    void createProductPageTest() throws Exception{
         ResultActions response = mockMvc.perform(//
                 get("/product/create")
         );
@@ -38,7 +38,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void editProductPageTest() throws Exception{
+    void editProductPageTest() throws Exception{
         ResultActions response = mockMvc.perform(//
                 get("/product/edit")
         );
@@ -49,7 +49,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void deleteProductPageTest() throws Exception{
+    void deleteProductPageTest() throws Exception{
         ResultActions response = mockMvc.perform(//
                 get("/product/delete")
         );
@@ -60,7 +60,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void listProductPageTest() throws Exception{
+    void listProductPageTest() throws Exception{
         ResultActions response = mockMvc.perform(//
                 get("/product/list")
         );
