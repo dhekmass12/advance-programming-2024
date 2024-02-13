@@ -86,9 +86,9 @@ class ProductRepositoryTest {
 
         Product oldProduct = productRepository.findProductById("eb55Be9f-1c39-460e-8860-71af6af63bd6");
 
-        assertEquals(oldProduct.getProductId(), "eb55Be9f-1c39-460e-8860-71af6af63bd6");
-        assertEquals(oldProduct.getProductName(), "Sampo Cap Bambang");
-        assertEquals(oldProduct.getProductQuantity(), 100);
+        assertEquals("eb55Be9f-1c39-460e-8860-71af6af63bd6", oldProduct.getProductId());
+        assertEquals("Sampo Cap Bambang", oldProduct.getProductName());
+        assertEquals(100, oldProduct.getProductQuantity());
 
         Product product2 = new Product();
         product2.setProductId(product1.getProductId());
@@ -98,9 +98,9 @@ class ProductRepositoryTest {
 
         Product newProduct = productRepository.findProductById("eb55Be9f-1c39-460e-8860-71af6af63bd6");
 
-        assertEquals(newProduct.getProductId(), "eb55Be9f-1c39-460e-8860-71af6af63bd6");
-        assertEquals(newProduct.getProductName(), "Sampo Head & Shoulders");
-        assertEquals(newProduct.getProductQuantity(), 10000);
+        assertEquals("eb55Be9f-1c39-460e-8860-71af6af63bd6", newProduct.getProductId());
+        assertEquals("Sampo Head & Shoulders", newProduct.getProductName());
+        assertEquals(10000, newProduct.getProductQuantity());
     }
 
     @Test
@@ -113,9 +113,9 @@ class ProductRepositoryTest {
 
         Product oldProduct = productRepository.findProductById("eb55Be9f-1c39-460e-8860-71af6af63bd6");
 
-        assertEquals(oldProduct.getProductId(), "eb55Be9f-1c39-460e-8860-71af6af63bd6");
-        assertEquals(oldProduct.getProductName(), "Sampo Cap Bambang");
-        assertEquals(oldProduct.getProductQuantity(), 100);
+        assertEquals("eb55Be9f-1c39-460e-8860-71af6af63bd6", oldProduct.getProductId());
+        assertEquals("Sampo Cap Bambang", oldProduct.getProductName());
+        assertEquals(100, oldProduct.getProductQuantity());
 
         productRepository.delete(product1);
 
