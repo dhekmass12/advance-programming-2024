@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.functional;
 
+import id.ac.ui.cs.advprog.eshop.controller.ProductController;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -20,6 +23,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 class CreateProductFunctionalTest {
     @LocalServerPort
     private int serverPort;
+
+    private MockMvc mockMvc;
 
     @Value("${app.baseUrl:http://localhost}")
     private String testBaseUrl;
@@ -34,7 +39,7 @@ class CreateProductFunctionalTest {
     }
 
     @Test
-    void productWhichHasBeenCreatedIsShownInProductList(ChromeDriver driver) throws Exception{
+    void productWhichHasBeenCreatedIsShownInProductListTest(ChromeDriver driver) throws Exception{
         Product product = new Product();
         product.setProductName("Biskuit Khong Guan");
         product.setProductQuantity(100);
