@@ -1,19 +1,16 @@
-# refleksi tutorial-0 & tutorial-1:
+# tutorial-2:
 
-Clean code principles:<br>
+Code quality issue:<br>
 <ol>
-<li>Meaningful names</li>
-<li>Keep function/method short.</li>
-<li>Good Comments</li>
-<li>Object and data structures.</li>
+<li>Tidak menggunakan public method -> ubah public method menjadi default method</li>
+<li>Duplicate code -> buat sebuah fungsi yang bisa dipanggil berkali-kali</li>
+<li>Meningkatkan maintainability -> hindari penggunaan literal yang sama, ganti dengan variable/contants</li>
 </ol>
 
-Penerapan (urut sesuai clean code principlesnya):<br>
+Workflow sudah memenuhi apa itu CI/CD, karena:<br>
 <ol>
-<li>Memberikan nama variable sesuai data yang disimpan. Memberikan nama function sesuai apa yang dilakukan oleh function tersebut</li>
-<li>Function yang dibuat hanya melakukan 1 pekerjaan.</li>
-<li>Tidak memberikan comment yang tidak perlu karena code yang ditulis sudah sangat jelas.</li>
-<li>Membuat semua data/field private agar hanya dapat diakses sesuai kebutuhan. Hanya menggunakan setter dan getter yang tersedia.</li>
+<li>Workflow mengharuskan untuk menjalankan semua unit test melalui perintah ./gradlew test</li>
+<li>Workflow mengharuskan juga melakukan code scanning menggunakan sonarcloud agar menghindari code smells</li>
+<li>Membuat executeable build secara otomatis</li>
+<li>Automatic deploy ke Koyeb setiap terjadi push pada main branch</li>
 </ol>
-
-Sebelumnya, saya membuat code cukup berantakan. Namun, pada mata kuliah ini saya diajarkan MVC pattern agar code saya menjadi lebih rapi dan saya akan terus belajar tentang pattern ini lebih banyak.
