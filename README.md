@@ -1,19 +1,22 @@
-# refleksi tutorial-0 & tutorial-1:
+# refleksi tutorial-3:
 
-Clean code principles:<br>
+Principles which i applied to my project:<br>
 <ol>
-<li>Meaningful names</li>
-<li>Keep function/method short.</li>
-<li>Good Comments</li>
-<li>Object and data structures.</li>
+<li>Single Responsibility Principle. Idenya adalah setiap kelas, modul, atau fungsi dalam program harus punya 1 responsibility saja. SRP saya terapkan pada project saya dengan memisahkan controller car dari controller product menjadi kelas independent. Hal ini saya lakukan karena method & variable pada car controller tidak diharapkan/digunakan pada car controller.</li>
+<li>Open-Closed Principle. Prinsip ini menyatakan bahwa entities harus terbuka untuk ekstensi, tetapi tertutup untuk modifikasi. Penerapannya yaitu adanya interface yang nantinya dapat diimplementasi oleh banyak service kedepannya, agar perubahan hanya pada class implementasinya saja.</li>
+<li>Liskov Subtitution Principle. LSP implies bahwa jika kelas di extend ke kelas lain, maka inheriting class harus berkelakuan sama / menggunakan seluruh properties dan behavior dari inherited class. LSP saya terapkan di project ini dengan membuat interface untuk masing-masing service yang cocok. Masing-masing service membutuhkan method yang berbeda-beda sehingga membutuhkan interface yang berbeda juga.</li>
 </ol>
 
-Penerapan (urut sesuai clean code principlesnya):<br>
+The advantages of applying SOLID principle:<br>
 <ol>
-<li>Memberikan nama variable sesuai data yang disimpan. Memberikan nama function sesuai apa yang dilakukan oleh function tersebut</li>
-<li>Function yang dibuat hanya melakukan 1 pekerjaan.</li>
-<li>Tidak memberikan comment yang tidak perlu karena code yang ditulis sudah sangat jelas.</li>
-<li>Membuat semua data/field private agar hanya dapat diakses sesuai kebutuhan. Hanya menggunakan setter dan getter yang tersedia.</li>
+<li>Class menjadi ringkas. Contoh: car controller sekarang tidak memuat method/var dari product controller lagi.</li>
+<li>Mengurangi dependensi. Contohnya, kita dapat mengubah kode di class product controller tanpa mengakibatkan side effect di car controller.</li>
+<li>Kode mudah dipahami. Contoh: jika ingin mengedit controller untuk car langsung saja buka file CarController.java, tidak perlu mencari classnya dulu di file ProductController.java.</li>
 </ol>
 
-Sebelumnya, saya membuat code cukup berantakan. Namun, pada mata kuliah ini saya diajarkan MVC pattern agar code saya menjadi lebih rapi dan saya akan terus belajar tentang pattern ini lebih banyak.
+The disadvantages of not applying SOLID principle:<br>
+<ol>
+<li>Class menjadi rumit. Contoh: car controller menginherit method/var dari product controller yang sama sekali tidak dibutuhkan.</li>
+<li>Dependensi tinggi. Contohnya, mengubah kode di class product controller akan mengakibatkan side effect di car controller.</li>
+<li>Kode sulit dipahami. Contoh: jika ingin mengedit controller untuk car, harus mencari classnya dulu di file ProductController.java.</li>
+</ol>
