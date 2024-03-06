@@ -2,6 +2,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.InvalidArgumentException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,6 @@ class PaymentTest {
         this.cashOnDeliveryPaymentData.put("address", "Jakarta");
         this.cashOnDeliveryPaymentData.put("deliveryFee", "50000");
     }
-
     @Test
     void testCreatePaymentEmptyData(){
         this.voucherCodePaymentData.clear();
@@ -34,15 +34,15 @@ class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentSuccessStatus(){
+    void testCreatePaymentWithVoucherCodeSuccessStatus(){
          Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "voucherCode",
                 this.voucherCodePaymentData
-        );
+         );
 
         assertSame(this.voucherCodePaymentData, payment.getPaymentData());
         assertEquals(1, payment.getPaymentData().size());
-        assertTrue(payment.getPaymentData().containsKey("ESHOP12345678ABC"));
+        assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
@@ -62,7 +62,7 @@ class PaymentTest {
 
         assertSame(this.voucherCodePaymentData, payment.getPaymentData());
         assertEquals(1, payment.getPaymentData().size());
-        assertTrue(payment.getPaymentData().containsKey("ESHOP123"));
+        assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
@@ -82,7 +82,7 @@ class PaymentTest {
 
         assertSame(this.voucherCodePaymentData, payment.getPaymentData());
         assertEquals(1, payment.getPaymentData().size());
-        assertTrue(payment.getPaymentData().containsKey("ESHOP123"));
+        assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
@@ -102,7 +102,7 @@ class PaymentTest {
 
         assertSame(this.voucherCodePaymentData, payment.getPaymentData());
         assertEquals(1, payment.getPaymentData().size());
-        assertTrue(payment.getPaymentData().containsKey("ESHOP123"));
+        assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
@@ -110,7 +110,7 @@ class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentSuccessStatus(){
+    void testCreatePaymentWithCashOnDeliverySuccessStatus(){
         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
                 "cashOnDelivery",
                 this.cashOnDeliveryPaymentData
