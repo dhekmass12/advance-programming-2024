@@ -55,11 +55,11 @@ class PaymentRepositoryTest {
 
     @Test
     void testSaveCreate(){
-        Order order = orders.get(0);
-        Payment payment = payments.get(0);
+        Order order = orders.getFirst();
+        Payment payment = payments.getFirst();
         Payment result = paymentRepository.addPayment(order, payment.getMethod(), payment.getPaymentData());
 
-        Payment findResult = paymentRepository.getPayment(payments.get(0).getId());
+        Payment findResult = paymentRepository.getPayment(payments.getFirst().getId());
         assertEquals(payment.getId(), result.getId());
         assertEquals(payment.getId(), findResult.getId());
         assertEquals(payment.getMethod(), findResult.getMethod());

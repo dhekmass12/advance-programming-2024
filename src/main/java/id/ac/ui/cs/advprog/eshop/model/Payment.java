@@ -14,6 +14,11 @@ public class Payment {
     private PaymentStatus status;
     private Map<String, String> paymentData;
 
+    private static final String VOUCHER_CODE = "voucherCode";
+    private static final String CASH_ON_DELIVERY = "cashOnDelivery";
+    private static final String ADDRESS = "address";
+    private static final String DELIVERY_FEE = "deliveryFee";
+
     private Payment(String id, String method, PaymentStatus status, Map<String, String> paymentData){
         this.id = id;
         this.method = method;
@@ -22,10 +27,10 @@ public class Payment {
         }
         this.paymentData = paymentData;
 
-        if (method.equals("voucherCode")){
+        if (method.equals(VOUCHER_CODE)){
             status = getVoucherCodeStatus();
         }
-        else if (method.equals("cashOnDelivery")){
+        else if (method.equals(CASH_ON_DELIVERY)){
             status = getCashOnDeliveryStatus();
         }
 
@@ -37,11 +42,11 @@ public class Payment {
     }
 
     private PaymentStatus getVoucherCodeStatus(){
-        if (paymentData.size() != 1 || !paymentData.containsKey("voucherCode")){
+        if (paymentData.size() != 1 || !paymentData.containsKey(VOUCHER_CODE)){
             return PaymentStatus.REJECTED;
         }
         else{
-            String voucherCode = paymentData.get("voucherCode");
+            String voucherCode = paymentData.get(VOUCHER_CODE);
             int charLong = voucherCode.length();
             String prefix = "";
             int numericalCharCount = 0;
@@ -66,13 +71,13 @@ public class Payment {
     }
 
     private PaymentStatus getCashOnDeliveryStatus(){
-        if (paymentData.size() != 2 || !paymentData.containsKey("address") || !paymentData.containsKey("deliveryFee")){
+        if (paymentData.size() != 2 || !paymentData.containsKey(ADDRESS) || !paymentData.containsKey(DELIVERY_FEE)){
             return PaymentStatus.REJECTED;
         }
-        else if (paymentData.get("address") == null || paymentData.get("address").isEmpty()){
+        else if (paymentData.get(ADDRESS) == null || paymentData.get(ADDRESS).isEmpty()){
             return PaymentStatus.REJECTED;
         }
-        else if (paymentData.get("deliveryFee") == null || paymentData.get("deliveryFee").isEmpty()){
+        else if (paymentData.get(DELIVERY_FEE) == null || paymentData.get(DELIVERY_FEE).isEmpty()){
             return PaymentStatus.REJECTED;
         }
         else{
