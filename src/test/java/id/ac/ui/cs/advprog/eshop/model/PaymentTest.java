@@ -26,7 +26,7 @@ class PaymentTest {
         this.voucherCodePaymentData.clear();
 
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+            Payment payment = new Payment("1",
                     "voucherCode",
                     this.voucherCodePaymentData
             );
@@ -35,8 +35,8 @@ class PaymentTest {
 
     @Test
     void testCreatePaymentWithVoucherCodeSuccessStatus(){
-         Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
-                "voucherCode",
+         Payment payment = new Payment("2",
+                 "voucherCode",
                 this.voucherCodePaymentData
          );
 
@@ -44,7 +44,7 @@ class PaymentTest {
         assertEquals(1, payment.getPaymentData().size());
         assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("2", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
         assertEquals(PaymentStatus.SUCCESS, payment.getStatus());
     }
@@ -55,7 +55,7 @@ class PaymentTest {
         this.voucherCodePaymentData = new HashMap<>();
         this.voucherCodePaymentData.put("voucherCode", "ESHOP123");
 
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "voucherCode",
                 this.voucherCodePaymentData
         );
@@ -64,7 +64,7 @@ class PaymentTest {
         assertEquals(1, payment.getPaymentData().size());
         assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
         assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
@@ -75,7 +75,7 @@ class PaymentTest {
         this.voucherCodePaymentData = new HashMap<>();
         this.voucherCodePaymentData.put("voucherCode", "12345678ABCDEFGH");
 
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "voucherCode",
                 this.voucherCodePaymentData
         );
@@ -84,7 +84,7 @@ class PaymentTest {
         assertEquals(1, payment.getPaymentData().size());
         assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
         assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
@@ -95,7 +95,7 @@ class PaymentTest {
         this.voucherCodePaymentData = new HashMap<>();
         this.voucherCodePaymentData.put("voucherCode", "ESHOP123456789BC");
 
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "voucherCode",
                 this.voucherCodePaymentData
         );
@@ -104,14 +104,14 @@ class PaymentTest {
         assertEquals(1, payment.getPaymentData().size());
         assertTrue(payment.getPaymentData().containsKey("voucherCode"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
         assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 
     @Test
     void testCreatePaymentWithCashOnDeliverySuccessStatus(){
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "cashOnDelivery",
                 this.cashOnDeliveryPaymentData
         );
@@ -121,7 +121,7 @@ class PaymentTest {
         assertTrue(payment.getPaymentData().containsKey("address"));
         assertTrue(payment.getPaymentData().containsKey("deliveryFee"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
         assertEquals(PaymentStatus.SUCCESS, payment.getStatus());
     }
@@ -133,7 +133,7 @@ class PaymentTest {
         this.cashOnDeliveryPaymentData.put("address", "");
         this.cashOnDeliveryPaymentData.put("deliveryFee", "50000");
 
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "cashOnDelivery",
                 this.cashOnDeliveryPaymentData
         );
@@ -143,7 +143,7 @@ class PaymentTest {
         assertTrue(payment.getPaymentData().containsKey("address"));
         assertTrue(payment.getPaymentData().containsKey("deliveryFee"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
         assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
@@ -155,7 +155,7 @@ class PaymentTest {
         this.cashOnDeliveryPaymentData.put("address", "Jakarta");
         this.cashOnDeliveryPaymentData.put("deliveryFee", "");
 
-        Payment payment = new Payment("13652556-012a-4c07-b546-54eb1396d79b",
+        Payment payment = new Payment("1",
                 "cashOnDelivery",
                 this.cashOnDeliveryPaymentData
         );
@@ -165,7 +165,7 @@ class PaymentTest {
         assertTrue(payment.getPaymentData().containsKey("address"));
         assertTrue(payment.getPaymentData().containsKey("deliveryFee"));
 
-        assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
+        assertEquals("1", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
         assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
