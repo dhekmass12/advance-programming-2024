@@ -1,8 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.InvalidArgumentException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +46,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS, payment.getStatus());
     }
 
     @Test
@@ -66,7 +66,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 
     @Test
@@ -86,7 +86,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 
     @Test
@@ -106,7 +106,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("voucherCode", payment.getMethod());
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 
     @Test
@@ -123,7 +123,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS, payment.getStatus());
     }
 
     @Test
@@ -145,7 +145,7 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 
     @Test
@@ -167,6 +167,6 @@ class PaymentTest {
 
         assertEquals("13652556-012a-4c07-b546-54eb1396d79b", payment.getId());
         assertEquals("cashOnDelivery", payment.getMethod());
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED, payment.getStatus());
     }
 }
